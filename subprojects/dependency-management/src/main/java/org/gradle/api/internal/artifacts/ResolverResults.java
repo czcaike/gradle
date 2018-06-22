@@ -71,7 +71,16 @@ public interface ResolverResults {
      */
     void artifactsResolved(ResolvedConfiguration resolvedConfiguration, VisitedArtifactSet visitedArtifacts);
 
+    /**
+     * Consumes the failure, allowing to either throw or do something else with it.
+     */
     ResolveException consumeNonFatalFailure();
+
+    /**
+     * Returns the failure, fatal or non fatal, or null if there's no failure. Used internally to
+     * set the failure on the resolution build operation result.
+     */
+    Throwable getFailure();
 
     boolean hasResolutionResult();
 }
